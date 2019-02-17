@@ -1,0 +1,8 @@
+.idea
+/.wing/
+/bin-debug/
+/bin-release/
+/libs/
+/resource/
+wingProperties.json
+manifest.json
