@@ -1,6 +1,6 @@
 {
-  "engineVersion": "5.2.13",
-  "compilerVersion": "5.2.13",
+  "engineVersion": "5.2.15",
+  "compilerVersion": "5.2.15",
   "template": {},
   "target": {
     "current": "web"
@@ -29,6 +29,10 @@
     },
     {
       "name": "promise"
+    },
+    {
+      "name": "chaos",
+      "path": "D:/work/chaos"
     }
   ]
 }
