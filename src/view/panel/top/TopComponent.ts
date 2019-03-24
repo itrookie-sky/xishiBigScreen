@@ -4,10 +4,10 @@ module hall {
 
         constructor() {
             super();
-            this.skinName = "TopComponentSkin";
+            this.skinName = "hall.TopComponentSkin";
         }
 
-        public update(data: mod.TopItemData[]) {
+        public update(data: TopItemData[]) {
             
         }
     }

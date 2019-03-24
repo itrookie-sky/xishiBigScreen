@@ -33,6 +33,10 @@
     {
       "name": "chaos",
       "path": "D:/work/chaos"
+    },
+    {
+      "name": "weixin",
+      "path": "D:/work/extensions5/weixinapi"
     }
   ]
 }

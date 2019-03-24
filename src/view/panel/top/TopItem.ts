@@ -3,17 +3,18 @@ module hall {
         public img_head: eui.Image;
         public rect_progress: eui.ProgressBar;
         public lab_top: eui.Label;
+        public group_progress: eui.Group;
         /**进度条 */
         public set proWidth(value: number) {
-            this.rect_progress.explicitWidth = value;
+            this.group_progress.explicitWidth = value;
         }
 
         constructor() {
             super();
-            this.skinName = "TopItemSkin";
+            this.skinName = "hall.TopItemSkin";
         }
 
-        public update(data: mod.TopItemData) {
+        public update(data: TopItemData) {
             RES.getResByUrl(data.link, function (res) {
                 this.img_head.source = res;
             }, this, RES.ResourceItem.TYPE_IMAGE);
