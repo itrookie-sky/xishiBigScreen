@@ -1,7 +1,42 @@
 module hall {
     export class HeadIcon extends chaos.Sprite {
+        public static pools: HeadIcon[];
+        /**
+         * 获取头像
+         * @param {string} src
+         */
+        public static createHead(src?: string): HeadIcon {
+            if (!this.pools) {
+                this.pools = [];
+            }
+            let head: HeadIcon = this.pools.shift() || new HeadIcon();
+            head.src = src;
+            return head;
+        }
+        /**
+         * 头像释放压栈
+         */
+        public static poolHead(head: HeadIcon) {
+            if (this.pools && this.pools.indexOf(head) < 0) {
+                this.pools.push(head);
+            }
+        }
+
+
         public img_head: eui.Image;
         public lab_nick: eui.Label;
+
+        constructor() {
+            super();
+            this.skinName = "hall.HeadIconSkin";
+        }
+
+        public childrenCreated() {
+            super.childrenCreated();
+            this.addEventListener(egret.Event.REMOVED_FROM_STAGE, () => {
+                HeadIcon.poolHead(this);
+            }, this);
+        }
 
         set src(source: any) {
             if (!source || source == '') {
@@ -16,6 +51,15 @@ module hall {
                 this.img_head.source = source;
             }
         }
+
+        set nick(nick: string) {
+            this.lab_nick.text = nick;
+        }
+
+        public update(data: any) {
+            
+        }
+
 
     }
 }

@@ -50,9 +50,7 @@ class Main extends eui.UILayer {
         let assetAdapter = new AssetAdapter();
         egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
         egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
-
-        hall.MainManager.init();
-
+        egret.ImageLoader.crossOrigin = "anonymous";
         this.runGame().catch(e => {
             console.log(e);
         })
@@ -60,6 +58,7 @@ class Main extends eui.UILayer {
 
     private async runGame() {
         await this.loadResource();
+        hall.Center.init();
         const result = await RES.getResAsync("description_json")
         await platform.login();
         const userInfo = await platform.getUserInfo();
@@ -99,6 +98,6 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected createGameScene(): void {
-        chaos.View.show("LotteryScence");
+        chaos.View.show("MainScence");
     }
 }
