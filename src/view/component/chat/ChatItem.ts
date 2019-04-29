@@ -11,6 +11,7 @@ module hall {
         }
 
         public update(msg: ChatMessageBaseData) {
+            var self = this;
             this.head.src = msg.from_headimg;
             this.head.nick = msg.from_name;
             switch (msg.type) {
@@ -22,7 +23,7 @@ module hall {
                 case ChatType.emoji:
                     this.currentState = "img";
                     RES.getResByUrl(msg.content, function (res) {
-                        this.img_chat.srouce = res;
+                        self.img_chat.source = res;
                     }, this, RES.ResourceItem.TYPE_IMAGE);
                     break;
                 case ChatType.money:
@@ -31,7 +32,7 @@ module hall {
                 case ChatType.gift:
                     this.currentState = "img";
                     RES.getResByUrl(msg.img, function (res) {
-                        this.img_chat.srouce = res;
+                        this.img_chat.source = res;
                     }, this, RES.ResourceItem.TYPE_IMAGE);
                     chaos.monitor.dispatchEvent(EventType.IM_PLAY_EFFECT, msg.animation);
                     break;

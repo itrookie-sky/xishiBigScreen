@@ -1,5 +1,5 @@
 module hall {
-    export class DemoScence extends chaos.Scene {
+    export class DemoScene extends chaos.Scene {
         public group: eui.Group;
         public btn_0: eui.Button;
         public btn_1: eui.Button;
@@ -37,7 +37,7 @@ module hall {
             this.video.addEventListener(egret.Event.COMPLETE, function () {
 
             }, this);
-            this.video.load("http://demo.csjlive.com/big/res/main_bg.mp4");
+            this.video.load("http://demo.csjlive.com/res/video/main_bg.mp4");
 
         }
 

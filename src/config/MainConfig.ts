@@ -2,8 +2,12 @@ module hall {
     /**客户端全局配置 */
     export class MainConfig {
         /**=====================地址相关====================== */
+        static root: string = "http://demo.csjlive.com/";
         static client: string = "http://demo.csjlive.com/big/";
         static openId: string = "big_1000";
+        static res: string = "res/";
+
+        static video_bg: string = "http://demo.csjlive.com/res/video/main_bg.mp4";
         /**=====================环信配置====================== */
         /**配置 */
         static IM_password: string = "xishi123456";

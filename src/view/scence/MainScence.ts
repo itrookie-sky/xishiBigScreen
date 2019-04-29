@@ -8,6 +8,8 @@ module hall {
         public group_chat: eui.Group;
         public group_com: eui.Group;
         public group_effect: eui.Group;
+        public video: egret.Video;
+        public group_video: eui.Group;
 
         public chatPool: ChatItem[];
 
@@ -21,8 +23,9 @@ module hall {
             super.childrenCreated();
             chaos.monitor.addEventListener(EventType.IM_ONMSG, this.onMsg, this);
             chaos.monitor.addEventListener(EventType.IM_PLAY_EFFECT, this.onEffect, this);
-        }
 
+
+        }
 
         private first: boolean = true;
 
@@ -46,6 +49,22 @@ module hall {
 
         onEffect(name: string) {
             Center.dragon.playDragon(name, this.group_effect);
+        }
+
+        play() {
+
+            var self = this;
+            this.video = Center.video.creatVideo();
+            this.video.fullscreen = false;
+            this.video.width = 1600;
+            this.video.height = 900;
+            this.group_video.addChild(this.video);
+            this.video.poster = "";
+            this.video.load(MainConfig.video_bg);
+            this.video.addEventListener(egret.Event.COMPLETE, function () {
+                console.log("complete");
+                self.video.play();
+            }, this);
         }
     }
 }

@@ -34,7 +34,7 @@ module hall {
             } else {
                 this.call(flag);
             }
-            if (!flag) this.hide();
+            this.hide();
         }
 
         show() {
@@ -43,12 +43,12 @@ module hall {
         }
 
         showMsg(msg: string, func: Function = null, thisObj: any = null, yes: string = "确定", no: string = "取消") {
-            this.show();
             this.lab_msg.text = msg;
             this.thisObj = thisObj;
             this.call = func;
             this.btn_yes.label = yes;
             this.btn_no.label = no;
+            this.show();
         }
 
         hide() {
