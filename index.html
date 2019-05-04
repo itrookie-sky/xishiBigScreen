@@ -67,6 +67,15 @@
         document.body.appendChild(s);
     };
 
+    var loadJson = function (src, callback){
+         var xhr = new XMLHttpRequest();
+         xhr.open('GET', src+'?v=' + Math.random(), true);
+         xhr.addEventListener("load", function(){
+             callback(JSON.parse(xhr.response));
+         });
+         xhr.send(null);
+    };
+
     var xhr = new XMLHttpRequest();
     xhr.open('GET', './manifest.json?v=' + Math.random(), true);
     xhr.addEventListener("load", function () {
@@ -78,6 +87,9 @@
             "./sdk/websdk.shim.js"
         ];
         var list = manifest.initial.concat(other).concat(manifest.game);
+
+        list.unshift("http://demo.csjlive.com/res/config/bigconfig.js");
+
         loadScript(list, function () {
             /**
              * {

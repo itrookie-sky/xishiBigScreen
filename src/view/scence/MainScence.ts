@@ -38,13 +38,22 @@ module hall {
         }
 
         onMsg(msg: ChatMessageBaseData) {
-            let chatItem: ChatItem = new ChatItem();
+            let chatItem: ChatItem = ChatItem.create();
             chatItem.update(msg);
-            let x: number = 1600 * Math.random();
-            let y: number = 900 * Math.random();
+            let x: number = System.stageWidth - 200;
+            let y: number = (System.stageHeight - 300) * Math.random();
             chatItem.x = x;
             chatItem.y = y;
-            this.group_chat.addChild(chatItem);
+            chatItem.show(this.group_chat);
+            this.barrageMove(chatItem);
+        }
+        /**弹幕移动 */
+        barrageMove(display: ChatItem) {
+            egret.Tween.removeTweens(display);
+            egret.Tween.get(display).to({ x: 0 }, ChatConst.barrageMove, egret.Ease.circOut).call(() => {
+                display.hide();
+                ChatItem.pushPool(display);
+            });
         }
 
         onEffect(name: string) {
@@ -56,8 +65,8 @@ module hall {
             var self = this;
             this.video = Center.video.creatVideo();
             this.video.fullscreen = false;
-            this.video.width = 1600;
-            this.video.height = 900;
+            this.video.width = System.stageWidth;
+            this.video.height = System.stageHeight;
             this.group_video.addChild(this.video);
             this.video.poster = "";
             this.video.load(MainConfig.video_bg);

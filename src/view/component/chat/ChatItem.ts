@@ -1,5 +1,16 @@
 module hall {
     export class ChatItem extends chaos.Sprite {
+        public static pools: ChatItem[] = [];
+
+        public static create(): ChatItem {
+            return this.pools.length > 0 ? this.pools.shift() : new ChatItem();
+        }
+
+        public static pushPool(d: ChatItem) {
+            d.clean();
+            this.pools.push(d);
+        }
+
         public lab_text: eui.Label;
         public head: HeadIcon;
         public group_hongbao: eui.Group;
@@ -8,6 +19,11 @@ module hall {
         constructor() {
             super();
             this.skinName = "hall.ChatItemSkin";
+        }
+
+        childrenCreated() {
+            super.childrenCreated();
+            this.layer = null;
         }
 
         public update(msg: ChatMessageBaseData) {
@@ -36,6 +52,24 @@ module hall {
                     }, this, RES.ResourceItem.TYPE_IMAGE);
                     chaos.monitor.dispatchEvent(EventType.IM_PLAY_EFFECT, msg.animation);
                     break;
+            }
+        }
+
+        clean() {
+
+        }
+
+        show(display?: egret.DisplayObjectContainer) {
+            super.show();
+            if (display) {
+                display.addChild(this);
+            }
+        }
+
+        hide() {
+            super.hide();
+            if (this.parent) {
+                this.parent.removeChild(this);
             }
         }
     }

@@ -11,4 +11,14 @@ module hall {
         static readonly money: string = "money";
         static readonly gift: string = "gift";
     }
+
+    export class SelectMenuType {
+        static readonly text: string = "text";
+        static readonly img: string = "img";
+    }
+
+    export class ChatConst {
+        /**弹幕移动时间 */
+        static readonly barrageMove: number = 6000;
+    }
 }

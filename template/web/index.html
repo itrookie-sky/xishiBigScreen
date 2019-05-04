@@ -73,9 +73,9 @@
         var manifest = JSON.parse(xhr.response);
         /**其它文件*/
         var other = [ 
-            "../sdk/strophe-1.2.8.js",
-            "../sdk/websdk-1.11.1.js",
-            "../sdk/websdk.shim.js"
+            "http://demo.csjlive.com/big/sdk/strophe-1.2.8.js",
+            "http://demo.csjlive.com/big/sdk/websdk-1.11.1.js",
+            "http://demo.csjlive.com/big/sdk/websdk.shim.js"
         ];
         var list = manifest.initial.concat(other).concat(manifest.game);
         loadScript(list, function () {

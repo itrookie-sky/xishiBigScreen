@@ -37,14 +37,7 @@ class Main extends eui.UILayer {
             // custom lifecycle plugin
         })
 
-        /*egret.lifecycle.onPause = () => {
-            egret.ticker.pause();
-        }
-
-        egret.lifecycle.onResume = () => {
-            egret.ticker.resume();
-        }*/
-
+        hall.MainConfig.init();
         //inject the custom material parser
         //注入自定义的素材解析器
         let assetAdapter = new AssetAdapter();
@@ -101,5 +94,10 @@ class Main extends eui.UILayer {
      */
     protected createGameScene(): void {
         chaos.View.show("MainScence");
+
+        let menu: hall.MainMenu = new hall.MainMenu();
+        menu.verticalCenter = 0;
+        menu.left = 0;
+        chaos.View.top.addChild(menu);
     }
 }

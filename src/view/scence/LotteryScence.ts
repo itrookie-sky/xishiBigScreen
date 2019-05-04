@@ -3,10 +3,44 @@ module hall {
         public btn_start: chaos.Button;
         public group_head: eui.Group;
         public group_light: eui.Group;
+        public select_num: SelectMenu;
+        public select_jiang: SelectMenu;
+        public input_num: eui.TextInput;
+
+        public select1: SelectMenuItemData[] = [
+            {
+                type: SelectMenuType.text,
+                value: 1,
+                desc: "一人",
+            },
+            {
+                type: SelectMenuType.text,
+                value: 2,
+                desc: "两人",
+            },
+        ];
+
+        public select2: SelectMenuItemData[] = [
+            {
+                type: SelectMenuType.text,
+                value: 1,
+                desc: "一等奖",
+            },
+            {
+                type: SelectMenuType.text,
+                value: 2,
+                desc: "二等奖",
+            },
+        ];
 
         constructor() {
             super();
             this.skinName = "hall.LotteryScenceSkin";
+        }
+
+        childrenCreated() {
+            super.childrenCreated();
+            this.select_jiang.update(this.select2);
         }
 
         public playLight(state: string = playLightState.normal) {

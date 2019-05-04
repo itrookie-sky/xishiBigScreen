@@ -1,12 +1,12 @@
 module hall {
     /**客户端全局配置 */
     export class MainConfig {
+        static liveId: string = "1000";
         /**=====================地址相关====================== */
         static root: string = "http://demo.csjlive.com/";
         static client: string = "http://demo.csjlive.com/big/";
         static openId: string = "big_1000";
         static res: string = "res/";
-
         static video_bg: string = "http://demo.csjlive.com/res/video/main_bg.mp4";
         /**=====================环信配置====================== */
         /**配置 */
@@ -41,14 +41,26 @@ module hall {
             isStropheLog: false
         }
 
+        static update(data: any) {
+            for (let key in data) {
+                this[key] = data[key];
+            }
+        }
 
         constructor() {
 
         }
 
         public static init() {
-            let liveid: string = chaos.getOption("liveid");
-            if (liveid) this.openId = `big_${liveid}`;
+            let liveId: string = chaos.getOption("liveid");
+            if (liveId) {
+                this.openId = `big_${liveId}`;
+                this.liveId = liveId;
+            }
+
+            if (window["config"]) {
+                this.update(window["config"]);
+            }
         }
     }
 }

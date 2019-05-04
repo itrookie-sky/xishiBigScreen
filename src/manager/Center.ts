@@ -18,11 +18,16 @@ module hall {
             this.IM = new IM();
             this.view = new ViewManager();
             this.view.init();
+            egret.MainContext.instance.stage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onStageTap, this);
         }
 
         /**询问 */
         static askMsg(msg: string, func: Function = null, thisObj: any = null, yes: string = "确定", no: string = "取消") {
             this.view.ask.showMsg(msg, func, thisObj, yes, no);
+        }
+
+        static onStageTap(e: egret.TouchEvent) {
+            chaos.monitor.dispatchEvent(EventType.TAP_STAGE);
         }
     }
 }
