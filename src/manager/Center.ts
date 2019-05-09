@@ -5,6 +5,7 @@ module hall {
         static dragon: DragonManager;
         static IM: IM;
         static view: ViewManager;
+        static net: NetWork;
 
         constructor() {
             super();
@@ -18,6 +19,7 @@ module hall {
             this.IM = new IM();
             this.view = new ViewManager();
             this.view.init();
+            this.net = new NetWork();
             egret.MainContext.instance.stage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onStageTap, this);
         }
 

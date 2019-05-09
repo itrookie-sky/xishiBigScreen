@@ -12,5 +12,7 @@ module hall {
         static readonly IM_PLAY_EFFECT: string = "IM_PLAY_EFFECT";
         /**下拉选择框开启 */
         static readonly SELECT_MENU_OPEN: string = "SELECT_MENU_OPEN";
+        /**登录轮询 */
+        static readonly HTTP_POLLING_LOGIN: string = "HTTP_POLLING_LOGIN";
     }
 }

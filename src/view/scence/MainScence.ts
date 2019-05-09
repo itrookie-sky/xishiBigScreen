@@ -46,6 +46,7 @@ module hall {
             chatItem.y = y;
             chatItem.show(this.group_chat);
             this.barrageMove(chatItem);
+            this.parseMsg(msg);
         }
         /**弹幕移动 */
         barrageMove(display: ChatItem) {
@@ -56,7 +57,16 @@ module hall {
             });
         }
 
+        parseMsg(msg: ChatMessageBaseData) {
+            switch (msg.type) {
+                case ChatType.gift:
+                    this.onEffect(msg.animation);
+                    break;
+            }
+        }
+
         onEffect(name: string) {
+            this.group_effect.removeChildren();
             Center.dragon.playDragon(name, this.group_effect);
         }
 

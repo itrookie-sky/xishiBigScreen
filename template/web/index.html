@@ -35,9 +35,6 @@
          data-show-fps="false" data-show-log="false"
          data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
     </div>
-<!--<script type='text/javascript' src='../sdk/strophe-1.2.8.js'></script>
-<script type='text/javascript' src='../sdk/websdk-1.11.1.js'></script>
-<script type='text/javascript' src='../sdk/websdk.shim.js'></script>-->
 <script>
     var loadScript = function (list, callback) {
         var loaded = 0;
@@ -75,7 +72,8 @@
         var other = [ 
             "http://demo.csjlive.com/big/sdk/strophe-1.2.8.js",
             "http://demo.csjlive.com/big/sdk/websdk-1.11.1.js",
-            "http://demo.csjlive.com/big/sdk/websdk.shim.js"
+            "http://demo.csjlive.com/big/sdk/websdk.shim.js",
+            "https://unpkg.com/axios/dist/axios.min.js"
         ];
         var list = manifest.initial.concat(other).concat(manifest.game);
         loadScript(list, function () {

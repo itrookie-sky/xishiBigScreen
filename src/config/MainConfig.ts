@@ -1,6 +1,7 @@
 module hall {
     /**客户端全局配置 */
     export class MainConfig {
+        static debug: boolean = true;
         static liveId: string = "1000";
         /**=====================地址相关====================== */
         static root: string = "http://demo.csjlive.com/";
@@ -8,6 +9,12 @@ module hall {
         static openId: string = "big_1000";
         static res: string = "res/";
         static video_bg: string = "http://demo.csjlive.com/res/video/main_bg.mp4";
+        /**准备抽奖 */
+        static prizeReady: string = "v1/screen/ready";
+        /**抽奖设置 */
+        static setPrize: string = "v1/screen/luckDraw";
+        /**全部中奖名单 */
+        static winner: string = "v1/screen/winner";
         /**=====================环信配置====================== */
         /**配置 */
         static IM_password: string = "xishi123456";
@@ -52,7 +59,7 @@ module hall {
         }
 
         public static init() {
-            let liveId: string = chaos.getOption("liveid");
+            let liveId: string = chaos.getOption("liveId");
             if (liveId) {
                 this.openId = `big_${liveId}`;
                 this.liveId = liveId;

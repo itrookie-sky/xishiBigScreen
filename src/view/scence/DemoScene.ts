@@ -50,21 +50,32 @@ module hall {
                     this.video.pause();
                     break;
                 case this.btn_2:
-                    Center.dragon.playDragon("wings", this.group_effect);
+                    Center.dragon.playDragon("bianpao", this.group_effect);
                     break;
                 case this.btn_3:
-                    Center.dragon.playDragon("cupid", this.group_effect);
+                    Center.dragon.playDragon("dapao", this.group_effect);
                     break;
                 case this.btn_4:
-                    Center.dragon.playDragon("firework", this.group_effect);
+                    Center.dragon.playDragon("liuxing", this.group_effect);
                     break;
                 case this.btn_5:
-                    Center.dragon.playDragon("space", this.group_effect);
+                    Center.dragon.playDragon("tianshi", this.group_effect);
                     break;
                 case this.btn_6:
                     Center.IM.open();
                     break;
                 case this.btn_7:
+                    Center.net.post(MainConfig.prizeReady, {
+                        liveId: MainConfig.liveId
+                    });
+                    Center.net.post(MainConfig.setPrize, {
+                        liveId: MainConfig.liveId,
+                        grade: "1",
+                        num: 5
+                    });
+                    Center.net.post(MainConfig.winner, {
+                        liveId: MainConfig.liveId
+                    });
                     break;
             }
         }

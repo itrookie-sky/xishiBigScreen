@@ -94,10 +94,11 @@ class Main extends eui.UILayer {
      */
     protected createGameScene(): void {
         chaos.View.show("MainScence");
-
-        let menu: hall.MainMenu = new hall.MainMenu();
-        menu.verticalCenter = 0;
-        menu.left = 0;
-        chaos.View.top.addChild(menu);
+        if (hall.MainConfig.debug) {
+            let menu: hall.MainMenu = new hall.MainMenu();
+            menu.verticalCenter = 0;
+            menu.left = 0;
+            chaos.View.top.addChild(menu);
+        }
     }
 }

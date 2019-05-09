@@ -6,6 +6,7 @@ module hall {
         public select_num: SelectMenu;
         public select_jiang: SelectMenu;
         public input_num: eui.TextInput;
+        public group_winner: eui.Group;
 
         public select1: SelectMenuItemData[] = [
             {
@@ -23,14 +24,19 @@ module hall {
         public select2: SelectMenuItemData[] = [
             {
                 type: SelectMenuType.text,
-                value: 1,
-                desc: "一等奖",
+                value: PrizeType.first,
+                desc: PrizeDesc[PrizeType.first],
             },
             {
                 type: SelectMenuType.text,
-                value: 2,
-                desc: "二等奖",
+                value: PrizeType.second,
+                desc: PrizeDesc[PrizeType.second],
             },
+            {
+                type: SelectMenuType.text,
+                value: PrizeType.third,
+                desc: PrizeDesc[PrizeType.third],
+            }
         ];
 
         constructor() {
@@ -73,10 +79,29 @@ module hall {
                 }
             }
         }
+        /**请求全部获奖者 */
+        public postWinner() {
+            var thiz = this;
+            this.group_winner.removeChildren();
+            
+            Center.net.post(MainConfig.winner, {
+                liveId: MainConfig.liveId
+            }).then(function (resp: any) {
+                if (resp.data.success) {
+                    let data = resp.data.data;
+                    for (let key in data) {
+                        let item: PrizeWinnerItem = new PrizeWinnerItem();
+                        item.update(key, data[key]);
+                        thiz.group_winner.addChild(item);
+                    }
+                }
+            });
+        }
 
         public show() {
             super.show();
             this.playLight();
+            this.postWinner();
         }
 
         public hide() {
