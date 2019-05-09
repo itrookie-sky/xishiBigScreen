@@ -68,7 +68,7 @@ module hall {
                     Center.net.post(MainConfig.prizeReady, {
                         liveId: MainConfig.liveId
                     });
-                    Center.net.post(MainConfig.setPrize, {
+                    Center.net.post(MainConfig.luckDraw, {
                         liveId: MainConfig.liveId,
                         grade: "1",
                         num: 5

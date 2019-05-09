@@ -6,6 +6,7 @@ module hall {
         static IM: IM;
         static view: ViewManager;
         static net: NetWork;
+        static timer: TimerManager;
 
         constructor() {
             super();
@@ -20,6 +21,8 @@ module hall {
             this.view = new ViewManager();
             this.view.init();
             this.net = new NetWork();
+            this.timer = new TimerManager();
+            this.timer.init();
             egret.MainContext.instance.stage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onStageTap, this);
         }
 

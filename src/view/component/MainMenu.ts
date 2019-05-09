@@ -19,6 +19,10 @@ module hall {
                 lab: "测试页",
                 link: "DemoScene"
             },
+            {
+                lab:"管理员登录",
+                link:"AdminScence"
+            }
         ];
 
         constructor() {

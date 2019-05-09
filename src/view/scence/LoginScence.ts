@@ -11,6 +11,14 @@ module hall {
         public childrenCreated() {
             super.childrenCreated();
             this.clean();
+            var thiz = this;
+            Center.net.post(MainConfig.prizeReady, {
+                liveId: MainConfig.liveId
+            }).then(function (resp: any) {
+                if (resp.data.success) {
+                    thiz.img_login.source = resp.data.data.QRcode;
+                }
+            });
         }
 
         public testAddHead() {
@@ -20,12 +28,35 @@ module hall {
             }
         }
 
-        public addHead(data){
-            let head:HeadIcon = HeadIcon.createHead();
+        public addHead(data) {
+            let head: HeadIcon = HeadIcon.createHead();
             head.update(data);
             this.group.addChild(head);
         }
 
+        public polling() {
+            var thiz = this;
+            Center.net.post(MainConfig.prizeReady, {
+                liveId: MainConfig.liveId
+            }).then(function (resp: any) {
+                if (resp.data.success) {
+                    thiz.updateLogin(resp.data.data);
+                }
+            });
+        }
+
+        public updateLogin(data: PrizeReadyData) {
+            this.cleanGroup();
+
+            let item: UserInfo;
+            let head: HeadIcon;
+            for (let i = 0; i < data.userArr.length; i++) {
+                item = data.userArr[i];
+                head = HeadIcon.createHead();
+                head.update(item);
+                this.group.addChild(head);
+            }
+        }
 
         public cleanGroup() {
             this.group.removeChildren();
@@ -37,10 +68,12 @@ module hall {
 
         public show() {
             super.show();
+            Center.timer.rgTimer(this.polling, this);
         }
 
         public hide() {
             super.hide();
+            Center.timer.rmTimer(this.polling, this);
         }
     }
 }

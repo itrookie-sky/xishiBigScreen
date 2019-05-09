@@ -25,6 +25,7 @@ module hall {
 
         public img_head: eui.Image;
         public lab_nick: eui.Label;
+        public user:UserInfo;
 
         constructor() {
             super();
@@ -56,8 +57,11 @@ module hall {
             this.lab_nick.text = nick;
         }
 
-        public update(data: any) {
-            
+        public update(data: UserInfo) {
+            if (!data) return;
+            this.user = data;
+            this.lab_nick.text = data.nickname;
+            this.src = data.headimgurl;
         }
 
 

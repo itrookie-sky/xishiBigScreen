@@ -93,7 +93,7 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected createGameScene(): void {
-        chaos.View.show("MainScence");
+        chaos.View.show("AdminScence");
         if (hall.MainConfig.debug) {
             let menu: hall.MainMenu = new hall.MainMenu();
             menu.verticalCenter = 0;

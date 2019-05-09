@@ -18,15 +18,15 @@ module hall {
 			}
 		}
 
-		public update(key: string, data: WinnerItemData[]) {
+		public update(key: string, data: UserInfo[]) {
 			if (!data) return;
 			this.clean();
 			this.lab_desc.text = `${PrizeKeyDesc[key]}`;
-			let item: WinnerItemData;
+			let item: UserInfo;
 			for (let i = 0; i < data.length; i++) {
 				item = data[i];
 				let head: HeadIcon = HeadIcon.createHead();
-				head.src = item.headimgurl;
+				head.update(item);
 				this.head_group.addChild(head);
 			}
 		}

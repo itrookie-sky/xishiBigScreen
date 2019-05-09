@@ -3,16 +3,19 @@ module hall {
     export class MainConfig {
         static debug: boolean = true;
         static liveId: string = "1000";
+        static pollingTime: number = 2000;
         /**=====================地址相关====================== */
         static root: string = "http://demo.csjlive.com/";
         static client: string = "http://demo.csjlive.com/big/";
         static openId: string = "big_1000";
         static res: string = "res/";
         static video_bg: string = "http://demo.csjlive.com/res/video/main_bg.mp4";
+        /**登录 */
+        static login: string = "/v1/screen/login";
         /**准备抽奖 */
         static prizeReady: string = "v1/screen/ready";
-        /**抽奖设置 */
-        static setPrize: string = "v1/screen/luckDraw";
+        /**抽奖*/
+        static luckDraw: string = "v1/screen/luckDraw";
         /**全部中奖名单 */
         static winner: string = "v1/screen/winner";
         /**=====================环信配置====================== */
