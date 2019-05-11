@@ -99,22 +99,85 @@ module hall {
 
             Center.net.post(MainConfig.luckDraw, {
                 liveId: MainConfig.liveId,
-                grade: grade, 
+                grade: grade,
                 num: +this.input_num.text
             }).then((resp: any) => {
                 if (resp.data.success) {
                     var data: UserInfo[] = resp.data.data;
-                    thiz.group_head.removeChildren();
-                    for (let i = 0; i < data.length; i++) {
-                        let head: HeadIcon = HeadIcon.createHead();
-                        head.update(data[i]);
-                        thiz.group_head.addChild(head);
-                    }
+                    this.updateLuck(data);
                 } else {
                     chaos.DisplayObjectUtils.showTips(resp.data.data, 4);
                 }
             });
         }
+
+        updateLuck(data: any) {
+            var thiz = this;
+            thiz.group_head.removeChildren();
+            for (let i = 0; i < data.length; i++) {
+                let head: HeadIcon = HeadIcon.createHead();
+                head.update(data[i]);
+                thiz.group_head.addChild(head);
+            }
+        }
+
+        public testLuck = [{
+            "live_id": "1000",
+            "grade": "1",
+            "openid": "obeXIt5LhsuK6CMNJFge1cXroNs8",
+            "createtime": 1557562387,
+            "headimgurl": "http://thirdwx.qlogo.cn/mmopen/B4UB3TiatBPg4PJ3QiaKm4ujwIXDcM1HT6TQChbOEYlqthLnDo40818ouRveEUDfd4X40gySNuTiahr2libwlLWGcK8PY5HzaIgA/132",
+            "nickname": "%E6%97%A0%E4%BA%BA%E8%A1%97%E8%A7%92"
+        },
+        {
+            "live_id": "1000",
+            "grade": "1",
+            "openid": "obeXIt5LhsuK6CMNJFge1cXroNs8",
+            "createtime": 1557562387,
+            "headimgurl": "http://thirdwx.qlogo.cn/mmopen/B4UB3TiatBPg4PJ3QiaKm4ujwIXDcM1HT6TQChbOEYlqthLnDo40818ouRveEUDfd4X40gySNuTiahr2libwlLWGcK8PY5HzaIgA/132",
+            "nickname": "%E6%97%A0%E4%BA%BA%E8%A1%97%E8%A7%92"
+        },
+        {
+            "live_id": "1000",
+            "grade": "1",
+            "openid": "obeXIt5LhsuK6CMNJFge1cXroNs8",
+            "createtime": 1557562387,
+            "headimgurl": "http://thirdwx.qlogo.cn/mmopen/B4UB3TiatBPg4PJ3QiaKm4ujwIXDcM1HT6TQChbOEYlqthLnDo40818ouRveEUDfd4X40gySNuTiahr2libwlLWGcK8PY5HzaIgA/132",
+            "nickname": "%E6%97%A0%E4%BA%BA%E8%A1%97%E8%A7%92"
+        },
+        {
+            "live_id": "1000",
+            "grade": "1",
+            "openid": "obeXIt5LhsuK6CMNJFge1cXroNs8",
+            "createtime": 1557562387,
+            "headimgurl": "http://thirdwx.qlogo.cn/mmopen/B4UB3TiatBPg4PJ3QiaKm4ujwIXDcM1HT6TQChbOEYlqthLnDo40818ouRveEUDfd4X40gySNuTiahr2libwlLWGcK8PY5HzaIgA/132",
+            "nickname": "%E6%97%A0%E4%BA%BA%E8%A1%97%E8%A7%92"
+        },
+        {
+            "live_id": "1000",
+            "grade": "1",
+            "openid": "obeXIt5LhsuK6CMNJFge1cXroNs8",
+            "createtime": 1557562387,
+            "headimgurl": "http://thirdwx.qlogo.cn/mmopen/B4UB3TiatBPg4PJ3QiaKm4ujwIXDcM1HT6TQChbOEYlqthLnDo40818ouRveEUDfd4X40gySNuTiahr2libwlLWGcK8PY5HzaIgA/132",
+            "nickname": "%E6%97%A0%E4%BA%BA%E8%A1%97%E8%A7%92"
+        },
+        {
+            "live_id": "1000",
+            "grade": "1",
+            "openid": "obeXIt5LhsuK6CMNJFge1cXroNs8",
+            "createtime": 1557562387,
+            "headimgurl": "http://thirdwx.qlogo.cn/mmopen/B4UB3TiatBPg4PJ3QiaKm4ujwIXDcM1HT6TQChbOEYlqthLnDo40818ouRveEUDfd4X40gySNuTiahr2libwlLWGcK8PY5HzaIgA/132",
+            "nickname": "%E6%97%A0%E4%BA%BA%E8%A1%97%E8%A7%92"
+        },
+        {
+            "live_id": "1000",
+            "grade": "1",
+            "openid": "obeXIt5LhsuK6CMNJFge1cXroNs8",
+            "createtime": 1557562387,
+            "headimgurl": "http://thirdwx.qlogo.cn/mmopen/B4UB3TiatBPg4PJ3QiaKm4ujwIXDcM1HT6TQChbOEYlqthLnDo40818ouRveEUDfd4X40gySNuTiahr2libwlLWGcK8PY5HzaIgA/132",
+            "nickname": "%E6%97%A0%E4%BA%BA%E8%A1%97%E8%A7%92"
+        }
+        ]
 
         /**请求全部获奖者 */
         public postWinner() {
