@@ -8,11 +8,12 @@ module hall {
 		openid: string;
 		/**中奖 */
 		grade: string;
+		/**头像图片路径 */
 		headimgurl: string;
-
-
-		public constructor() {
-			super();
-		}
+		label_id: number;
+		label: string;
+		/**排行榜指数数值 */
+		num: string;
+		type: string;
 	}
 }

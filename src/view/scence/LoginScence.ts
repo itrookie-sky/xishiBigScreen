@@ -47,7 +47,7 @@ module hall {
 
         public updateLogin(data: PrizeReadyData) {
             this.cleanGroup();
-
+            
             let item: UserInfo;
             let head: HeadIcon;
             for (let i = 0; i < data.userArr.length; i++) {

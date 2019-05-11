@@ -18,6 +18,8 @@ module hall {
         static luckDraw: string = "v1/screen/luckDraw";
         /**全部中奖名单 */
         static winner: string = "v1/screen/winner";
+        /**排行榜 */
+        static rankList: string = "/v1/chat/exponent";
         /**=====================环信配置====================== */
         /**配置 */
         static IM_password: string = "xishi123456";

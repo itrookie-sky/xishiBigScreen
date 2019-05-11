@@ -2,7 +2,7 @@ module hall {
     export class MainScence extends chaos.Scene {
         public top_men: TopComponent;
         public top_women: TopComponent;
-        public pro_home: eui.ProgressBar;
+        public home: HomeValue;
         public lab_man: eui.Label;
         public lab_women: eui.Label;
         public group_chat: eui.Group;
@@ -17,6 +17,41 @@ module hall {
             super();
             this.skinName = "hall.MainScenceSkin";
             this.chatPool = [];
+        }
+
+        public testRank: any = {
+            "man": [{
+                "id": 1000,
+                "label_id": 2,
+                "openid": "obeXIt1Tn_J01RnUiJ5Bks5zsrco",
+                "nickname": "迷死特祁",
+                "headimgurl": "http://thirdwx.qlogo.cn/mmopen/ajNVdqHZLLCOrJXFqYcXe9zJ0Gj8lojric5LczFkxkqrLyZxs7MxBPXdGpl5sTaBJD0Z53o0ib05qOghMHuEb7KQ/132",
+                "num": "50",
+                "label": "同学2",
+                "type": "man"
+            }, {
+                "id": 1004,
+                "label_id": 1,
+                "openid": "obeXIt3pNDRuOYRgz1KWjOwIEoZM",
+                "nickname": "。",
+                "headimgurl": "http://thirdwx.qlogo.cn/mmopen/0sDCa2E8S1uS9ysTe9o0PmiatPekMv07wEmsvhib25iczibKOicffX2z95jT6g8T7XiaglicyobVoypvBw36RtFJlgZwkGwosun641V/132",
+                "num": "40",
+                "label": "同学1",
+                "type": "man"
+            }, {
+                "id": 1001,
+                "label_id": 4,
+                "openid": "obeXItwugPnhyPc6SPHbMsdKe3Xw",
+                "nickname": "小吖龙",
+                "headimgurl": "http://thirdwx.qlogo.cn/mmopen/Q3auHgzwzM7DJ7AJr0qQ4jW7bkoBq3U3PcsnS68ab37D1slLnvWApHAPlJ8Sahiaib0u8ib1dzmsNBcj7HLouUZPg/132",
+                "num": "20",
+                "label": "亲属2",
+                "type": "woman"
+            }],
+            "woman": [],
+            "man_count": 61,
+            "woman_count": 39,
+            "seeNum": 7
         }
 
         childrenCreated() {
@@ -35,6 +70,33 @@ module hall {
                 this.first = false;
                 Center.IM.open();
             }
+            // this.updateTop(this.testRank);
+            Center.timer.rgTimer(this.postRank, this);
+        }
+
+        hide() {
+            super.hide();
+            Center.timer.rmTimer(this.postRank, this);
+        }
+
+        /**请求排行榜  当家指数数据 */
+        postRank() {
+            var thiz = this;
+            Center.net.post(MainConfig.rankList, {
+                openId: MainConfig.openId,
+                liveId: MainConfig.liveId,
+                page_size: 10
+            }).then((resp: any) => {
+                if (resp.data.success) {
+                    thiz.updateTop(resp.data.data);
+                }
+            });
+        }
+
+        updateTop(data: RankData) {
+            this.home.updateValue(+data.man_count);
+            this.top_men.update(data.man);
+            this.top_women.update(data.woman);
         }
 
         onMsg(msg: ChatMessageBaseData) {

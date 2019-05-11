@@ -52,6 +52,7 @@ module hall {
         }
 
         setValue(data: SelectMenuItemData) {
+            this.cur = data;
             switch (data.type) {
                 case SelectMenuType.img:
                     this.img_value.source = data.value;
@@ -65,6 +66,7 @@ module hall {
         cleanValue() {
             this.lab_value.text = "";
             this.img_value.source = "";
+            this.cur = null;
         }
 
         updataState(hash: number) {

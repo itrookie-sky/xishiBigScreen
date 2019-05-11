@@ -95,11 +95,11 @@ module hall {
             var sCur = this.select_jiang.cur;
             var grade: string = sCur.value;
 
-            chaos.DisplayObjectUtils.showTips(`${sCur.desc} 开始抽奖`, 5);
+            chaos.DisplayObjectUtils.showTips(`${sCur.desc} 开始抽奖`, 4);
 
             Center.net.post(MainConfig.luckDraw, {
                 liveId: MainConfig.liveId,
-                grade: grade,
+                grade: grade, 
                 num: +this.input_num.text
             }).then((resp: any) => {
                 if (resp.data.success) {
@@ -110,6 +110,8 @@ module hall {
                         head.update(data[i]);
                         thiz.group_head.addChild(head);
                     }
+                } else {
+                    chaos.DisplayObjectUtils.showTips(resp.data.data, 4);
                 }
             });
         }
