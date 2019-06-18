@@ -3,6 +3,8 @@ module hall {
         public from_name: string;
         public from_headimg: string;
         public from_label: string;
+        /**man woman */
+        public from_type:string;
         /**消息类型 */
         public type: string;
         public content: string;

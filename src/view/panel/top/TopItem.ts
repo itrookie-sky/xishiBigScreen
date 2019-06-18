@@ -15,6 +15,9 @@ module hall {
         }
 
         public update(data: UserInfo, max: number) {
+            if (!data.headimgurl) {
+                return;
+            }
             RES.getResByUrl(data.headimgurl, function (res) {
                 this.img_head.source = res;
             }, this, RES.ResourceItem.TYPE_IMAGE);

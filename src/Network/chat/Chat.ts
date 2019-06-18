@@ -50,7 +50,7 @@ module hall {
             this.webim.listen({
                 onOpened: function (msg) {
                     console.log("%c[opened] 连接已成功建立", "color: green", msg);
-                    _this.join();
+                    // _this.join();
                 },
                 onClosed: function (msg) {
                     console.log("%c[closed] 连接已关闭", "color: red");

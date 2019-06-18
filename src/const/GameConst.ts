@@ -43,12 +43,21 @@ module hall {
         [PrizeType.fourth]: "四等奖",
         [PrizeType.fifth]: "五等奖",
     }
-    
+
     export var PrizeKeyDesc = {
         [PrizeType.firstKey]: "一等奖",
         [PrizeType.secondKey]: "二等奖",
         [PrizeType.thirdKey]: "三等奖",
         [PrizeType.fourthKey]: "四等奖",
         [PrizeType.fifthKey]: "五等奖",
+    }
+
+    export class FromType {
+        static readonly man: string = "man";
+        static readonly woman: string = "woman";
+    }
+
+    export class EffectType {
+        static readonly dapao: string = "dapao";
     }
 }

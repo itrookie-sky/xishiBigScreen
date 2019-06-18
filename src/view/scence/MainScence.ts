@@ -124,6 +124,9 @@ module hall {
                 case ChatType.gift:
                     this.onEffect(msg.animation);
                     break;
+                case ChatType.money:
+                    this.onEffect(EffectType.dapao);
+                    break;
             }
         }
 

@@ -10,7 +10,7 @@ module hall {
 
         init() {
             if (this.timeId) egret.clearInterval(this.timeId);
-            egret.setInterval(this.update, this, MainConfig.pollingTime);
+            this.timeId = egret.setInterval(this.update, this, MainConfig.pollingTime);
         }
 
         update() {

@@ -30,7 +30,7 @@ module hall {
 
             apiURL: 'http://a1.easemob.com', // rest Server地址，对于在console.easemob.com创建的appkey，固定为该值
 
-            appkey: '1109190326042016#xishi', // App key
+            appkey: '1116190530211349#xishi', // App key
 
             https: false, // 是否使用https
 

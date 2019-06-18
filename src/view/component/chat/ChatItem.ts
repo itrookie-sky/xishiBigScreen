@@ -15,6 +15,7 @@ module hall {
         public head: HeadIcon;
         public group_hongbao: eui.Group;
         public img_chat: eui.Image;
+        public img_bg: eui.Image;
 
         constructor() {
             super();
@@ -30,6 +31,7 @@ module hall {
             var self = this;
             this.head.src = msg.from_headimg;
             this.head.nick = msg.from_name;
+            this.img_bg.source = msg.from_type == FromType.man ? "big_chat_03_png" : "big_chat_02_png";
             switch (msg.type) {
                 case ChatType.text:
                     this.currentState = "text";
